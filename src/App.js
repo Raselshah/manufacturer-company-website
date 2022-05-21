@@ -1,10 +1,15 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import HomePage from "./Pages/HomePage/HomePage";
+import NavMenu from "./Pages/NavMenu/NavMenu";
 
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <button class="btn btn-primary">Button</button>
+    <div className="max-w-screen-2xl px-6 mx-auto">
+      <NavMenu />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </div>
   );
 }
