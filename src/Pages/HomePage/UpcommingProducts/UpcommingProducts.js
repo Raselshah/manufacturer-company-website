@@ -10,19 +10,19 @@ const UpcommingProducts = () => {
         Working Together For Your Better Life
       </h2>
 
-      <div class="hero min-h-screen">
-        <div class="hero-content grid grid-cols-1 lg:grid-cols-2">
+      <div className="hero min-h-screen">
+        <div className="hero-content grid grid-cols-1 lg:grid-cols-2">
           <img
             src="https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            class="w-full shadow-2xl mx-auto"
+            className="w-full shadow-2xl mx-auto"
           />
           <div className="bg-slate-100 p-6 lg:p-12">
             <div className="bg-red-400 py-2">
-              <h1 class="text-4xl font-bold text-center">
+              <h1 className="text-4xl font-bold text-center">
                 Project Information
               </h1>
             </div>
-            <p class="py-6">
+            <p className="py-6">
               A diode vacuum tube or thermionic diode is a vacuum tube with two
               electrodes, a heated cathode and a plate, in which electrons can
               flow in only one direction, from cathode to plate.

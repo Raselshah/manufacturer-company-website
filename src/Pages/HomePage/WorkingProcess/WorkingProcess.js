@@ -4,11 +4,11 @@ const WorkingProcess = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-16 gap-12">
       <div className=" flex flex-col justify-center items-center">
-        <div class="avatar indicator">
-          <span class="indicator-item badge rounded-full badge-secondary">
+        <div className="avatar indicator">
+          <span className="indicator-item badge rounded-full badge-secondary">
             01
           </span>
-          <div class="w-48 h-48 rounded-full hover:bg-red-200">
+          <div className="w-48 h-48 rounded-full hover:bg-red-200">
             <img
               className="hover:scale-125 duration-500"
               src="https://images.pexels.com/photos/884979/pexels-photo-884979.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -24,11 +24,11 @@ const WorkingProcess = () => {
         </div>
       </div>
       <div className=" flex flex-col justify-center items-center">
-        <div class="avatar indicator">
-          <span class="indicator-item badge rounded-full badge-secondary">
+        <div className="avatar indicator">
+          <span className="indicator-item badge rounded-full badge-secondary">
             02
           </span>
-          <div class="w-48 h-48 rounded-full hover:bg-red-200">
+          <div className="w-48 h-48 rounded-full hover:bg-red-200">
             <img
               className="hover:scale-125 duration-500"
               src="https://images.pexels.com/photos/4492273/pexels-photo-4492273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -44,11 +44,11 @@ const WorkingProcess = () => {
         </div>
       </div>
       <div className=" flex flex-col justify-center items-center">
-        <div class="avatar indicator">
-          <span class="indicator-item badge rounded-full badge-secondary">
+        <div className="avatar indicator">
+          <span className="indicator-item badge rounded-full badge-secondary">
             03
           </span>
-          <div class="w-48 h-48 rounded-full hover:bg-red-200">
+          <div className="w-48 h-48 rounded-full hover:bg-red-200">
             <img
               className="hover:scale-125 duration-500"
               src="https://images.pexels.com/photos/4705623/pexels-photo-4705623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -64,11 +64,11 @@ const WorkingProcess = () => {
         </div>
       </div>
       <div className=" flex flex-col justify-center items-center">
-        <div class="avatar indicator">
-          <span class="indicator-item badge rounded-full badge-secondary">
+        <div className="avatar indicator">
+          <span className="indicator-item badge rounded-full badge-secondary">
             04
           </span>
-          <div class="w-48 h-48 rounded-full hover:bg-red-200">
+          <div className="w-48 h-48 rounded-full hover:bg-red-200">
             <img
               className="hover:scale-125 duration-500"
               src="https://images.pexels.com/photos/442152/pexels-photo-442152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
