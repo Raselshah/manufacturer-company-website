@@ -20,9 +20,6 @@ const NavMenu = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/purchase">Purchase</Link>
-      </li>
-      <li>
         <Link to="/blog">Blogs</Link>
       </li>
       <li>
