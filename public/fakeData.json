@@ -1,11 +1,14 @@
 [
     {
-        "id": 0,
+        
         "price": 20,
-        "picture": "https://cdn.britannica.com/56/199056-050-CCC44482/Jeff-Bezos-2017.jpg",
-        "name": "Jeff Bezos",
-        "comment" : "This cozy restaurant has left the best impressions! Hospitable hosts, delicious dishes, beautiful presentation, wide wine list and wonderful dessert. I recommend to everyone! I would like to come back here again and again.",
-        "rating": 4.5
+        "picture": "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870",
+        "name": "Motherboard",
+        "description" : "This cozy restaurant has left the best impressions! Hospitable hosts, delicious dishes, beautiful presentation, wide wine list and wonderful dessert. I recommend to everyone! I would like to come back here again and again.",
+        "rating": 4.5,
+        "maxQuantity":500,
+        "minQuantity":50,
+        "availableQuantity":2000
       },
       {
         "id": 1,

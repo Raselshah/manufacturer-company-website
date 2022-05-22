@@ -12,7 +12,7 @@ const DisplayProducts = ({ product, orderProduct }) => {
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">{name}</h2>
-          <p>{description.slice(0, 30)}</p>
+          <p>{description?.slice(0, 30)}</p>
           <div className="card-actions">
             <button
               onClick={() => navigate(`/purchase/${_id}`)}

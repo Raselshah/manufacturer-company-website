@@ -4,14 +4,15 @@ import { useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Purchase = () => {
-  const [singleProduct, setSingleProduct] = useState({});
-  const [user] = useAuthState(auth);
   const { id } = useParams();
+  const [user] = useAuthState(auth);
+  const [singleProduct, setSingleProduct] = useState({});
+
   useEffect(() => {
     fetch(`http://localhost:5000/purchase/${id}`)
       .then((res) => res.json())
-      .then((data) => setSingleProduct(data));
-  }, []);
+      .then((result) => setSingleProduct(result));
+  }, [singleProduct]);
 
   const {
     name,
@@ -33,7 +34,24 @@ const Purchase = () => {
       console.log("less than");
       return;
     } else {
-      console.log(quantity);
+      let newAvailable = availableQuantity - quantity;
+      const updateProduct = {
+        ...singleProduct,
+        availableQuantity: newAvailable,
+      };
+      fetch(`http://localhost:5000/purchase/${id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateProduct),
+      })
+        .then((res) => res.json())
+        .then((data) => setSingleProduct(data));
+
+      setSingleProduct(updateProduct);
+
+      event.target.reset();
     }
   };
   return (
@@ -47,7 +65,11 @@ const Purchase = () => {
             <h2 class="card-title">{name}</h2>
             <p>{description}</p>
             <p className="text-accent text-lg font-bold">Price $ : {price}</p>
-            <form class="card-actions justify-end" onSubmit={handleBuyButton}>
+            <p className="text-accent text-lg font-bold">
+              Available products : {availableQuantity}
+            </p>
+
+            <form onSubmit={handleBuyButton} class="card-actions justify-end">
               <input
                 type="number"
                 name="quantity"
