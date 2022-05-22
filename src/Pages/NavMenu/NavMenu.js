@@ -1,11 +1,26 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const NavMenu = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+  const logout = () => {
+    signOut(auth);
+    navigate("/login");
+  };
+  if (loading) {
+    return <p>loading...</p>;
+  }
   const menuItems = (
     <>
       <li>
         <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/purchase">Purchase</Link>
       </li>
       <li>
         <Link to="/blog">Blogs</Link>
@@ -16,11 +31,11 @@ const NavMenu = () => {
       <li>
         <Link to="/about">About Me</Link>
       </li>
-      {false ? (
+      {user ? (
         <div className="dropdown dropdown-end">
           <label tabindex="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=33791" />
+              <img src={user?.email} alt="" />
             </div>
           </label>
           <ul
@@ -37,7 +52,9 @@ const NavMenu = () => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <button className="hover:underline" onClick={logout}>
+                Logout
+              </button>
             </li>
           </ul>
         </div>

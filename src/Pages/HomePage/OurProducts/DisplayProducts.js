@@ -12,7 +12,7 @@ const DisplayProducts = ({ product }) => {
           <h2 className="card-title">{name}</h2>
           <p>{comment.slice(0, 30)}</p>
           <div className="card-actions">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-primary">Order Now</button>
           </div>
         </div>
       </div>
