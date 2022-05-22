@@ -6,6 +6,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -149,7 +150,7 @@ const SignUp = () => {
 
           <div className="divider">OR</div>
 
-          {/* <SocialLogin /> */}
+          <SocialLogin />
         </div>
       </div>
     </div>

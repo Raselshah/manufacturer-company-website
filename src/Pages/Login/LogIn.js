@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -130,7 +131,7 @@ const LogIn = () => {
 
           <div className="divider">OR</div>
 
-          {/* <SocialLogin /> */}
+          <SocialLogin />
         </div>
       </div>
     </div>

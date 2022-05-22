@@ -6,6 +6,8 @@ import NavMenu from "./Pages/NavMenu/NavMenu";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SignUp from "./SignUp/SignUp";
+import Purchase from "./Pages/Purchase/Purchase";
+import RequireAuth from "./Shared/RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -13,6 +15,15 @@ function App() {
       <NavMenu />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route
+          path="/purchase"
+          element={
+            <RequireAuth>
+              <Purchase />
+            </RequireAuth>
+          }
+        />
+
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

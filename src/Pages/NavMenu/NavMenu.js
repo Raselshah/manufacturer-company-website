@@ -35,7 +35,13 @@ const NavMenu = () => {
         <div className="dropdown dropdown-end">
           <label tabindex="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src={user?.email} alt="" />
+              {user?.photoURL ? (
+                <img src={user?.photoURL} alt="" />
+              ) : (
+                <h3 className="text-center text-lg text-secondary flex justify-center items-center h-full">
+                  {user?.email?.slice(0, 2)}
+                </h3>
+              )}
             </div>
           </label>
           <ul
