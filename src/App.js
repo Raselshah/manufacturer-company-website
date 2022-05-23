@@ -10,6 +10,8 @@ import Purchase from "./Pages/Purchase/Purchase";
 import RequireAuth from "./Shared/RequireAuth/RequireAuth";
 import UserProfile from "./Pages/UserProfile/UserProfile";
 import DashBoard from "./Pages/Dashboard/DashBoard";
+import MakeAdmin from "./Pages/MakeAdmin/MakeAdmin";
+import Orders from "./Pages/Dashboard/Orders";
 
 function App() {
   return (
@@ -32,7 +34,10 @@ function App() {
               <DashBoard />
             </RequireAuth>
           }
-        />
+        >
+          <Route path="makeAdmin" element={<MakeAdmin />} />
+          <Route path="orders" element={<Orders />} />
+        </Route>
 
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/login" element={<LogIn />} />

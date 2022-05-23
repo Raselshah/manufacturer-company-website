@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 
@@ -8,10 +7,6 @@ const Purchase = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [singleProduct, setSingleProduct] = useState({});
-
-  // const { isLoading, error, data } = useQuery("products", () =>
-  //   fetch(`http://localhost:5000/purchase/${id}`).then((res) => res.json())
-  // );
 
   useEffect(() => {
     fetch(`http://localhost:5000/purchase/${id}`)
@@ -54,8 +49,28 @@ const Purchase = () => {
         .then((res) => res.json())
         .then((data) => setSingleProduct(data));
 
+      // order items post
+      const totalPrice = quantity * price;
+      const ordersInfo = {
+        name: name,
+        picture: picture,
+        price: totalPrice,
+        email: user.email,
+        userName: user?.displayName,
+        quantity: quantity,
+      };
+      fetch("http://localhost:5000/orders", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(ordersInfo),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+        });
       setSingleProduct(updateProduct);
-
       event.target.reset();
     }
   };
