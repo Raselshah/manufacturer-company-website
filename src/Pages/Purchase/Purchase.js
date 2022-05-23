@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 
@@ -7,6 +8,10 @@ const Purchase = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [singleProduct, setSingleProduct] = useState({});
+
+  // const { isLoading, error, data } = useQuery("products", () =>
+  //   fetch(`http://localhost:5000/purchase/${id}`).then((res) => res.json())
+  // );
 
   useEffect(() => {
     fetch(`http://localhost:5000/purchase/${id}`)
@@ -54,6 +59,27 @@ const Purchase = () => {
       event.target.reset();
     }
   };
+  const handleUserInfo = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const name = event.target.name.value;
+    const address = event.target.address.value;
+    const phoneNumber = event.target.phoneNumber.value;
+    console.log(email, name, address, phoneNumber);
+    const userInfo = { email, name, address, phoneNumber };
+    fetch("http://localhost:5000/userInfo", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        event.target.reset();
+      });
+  };
   return (
     <div class="hero min-h-screen bg-base-200">
       <div class="hero-content grid grid-cols-1 lg:grid-cols-2">
@@ -87,41 +113,51 @@ const Purchase = () => {
         </div>
         <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div class="card-body">
-            <div class="form-control">
-              <input
-                value={user?.email}
-                readOnly
-                disabled
-                type="text"
-                class="input input-bordered"
-              />
-            </div>
-            <div class="form-control">
-              <input
-                value={user?.displayName}
-                disabled
-                readOnly
-                type="text"
-                class="input input-bordered"
-              />
-            </div>
-            <div class="form-control">
-              <input
-                placeholder="Address"
-                type="text"
-                class="input input-bordered"
-              />
-            </div>
-            <div class="form-control">
-              <input
-                placeholder="Phone Number"
-                type="number"
-                class="input input-bordered"
-              />
-            </div>
-            <div class="form-control mt-6">
-              <button class="btn btn-primary">SUBMIT</button>
-            </div>
+            <form onSubmit={handleUserInfo} className="flex flex-col gap-2">
+              <div class="form-control">
+                <input
+                  name="email"
+                  value={user?.email}
+                  readOnly
+                  disabled
+                  type="text"
+                  class="input input-bordered"
+                />
+              </div>
+              <div class="form-control">
+                <input
+                  name="name"
+                  value={user?.displayName}
+                  disabled
+                  readOnly
+                  type="text"
+                  class="input input-bordered"
+                />
+              </div>
+              <div class="form-control">
+                <input
+                  name="address"
+                  placeholder="Address"
+                  type="text"
+                  class="input input-bordered"
+                />
+              </div>
+              <div class="form-control">
+                <input
+                  name="phoneNumber"
+                  placeholder="Phone Number"
+                  type="text"
+                  class="input input-bordered"
+                />
+              </div>
+              <div class="form-control mt-6">
+                <input
+                  className="btn btn-primary"
+                  type="submit"
+                  value="SUBMIT"
+                />
+              </div>
+            </form>
           </div>
         </div>
       </div>
