@@ -3,7 +3,6 @@ import DisplayProducts from "./DisplayProducts";
 
 const OurProducts = () => {
   const [products, setProducts] = useState([]);
-
   useEffect(() => {
     fetch("http://localhost:5000/home")
       .then((res) => res.json())

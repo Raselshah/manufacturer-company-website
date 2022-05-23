@@ -12,6 +12,7 @@ import UserProfile from "./Pages/UserProfile/UserProfile";
 import DashBoard from "./Pages/Dashboard/DashBoard";
 import MakeAdmin from "./Pages/MakeAdmin/MakeAdmin";
 import Orders from "./Pages/Dashboard/Orders";
+import Review from "./Pages/Dashboard/Review";
 
 function App() {
   return (
@@ -35,8 +36,9 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route path="makeAdmin" element={<MakeAdmin />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="makeAdmin" element={<MakeAdmin />} />
+          <Route path="review" element={<Review />} />
         </Route>
 
         <Route path="/userProfile" element={<UserProfile />} />

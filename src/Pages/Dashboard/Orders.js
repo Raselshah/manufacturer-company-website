@@ -68,6 +68,7 @@ const Orders = () => {
                 <td>{order?.price}</td>
                 <th>
                   <button class="btn btn-ghost btn-xs">Pay</button>
+                  <button class="btn btn-ghost btn-xs">cancel</button>
                 </th>
               </tr>
             ))}
