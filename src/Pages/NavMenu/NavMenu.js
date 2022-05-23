@@ -9,6 +9,7 @@ const NavMenu = () => {
   const navigate = useNavigate();
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem("accessToken");
     navigate("/login");
   };
   if (loading) {

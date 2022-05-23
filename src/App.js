@@ -5,7 +5,7 @@ import LogIn from "./Pages/Login/LogIn";
 import NavMenu from "./Pages/NavMenu/NavMenu";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SignUp from "./SignUp/SignUp";
+import SignUp from "./Pages/SignUp/SignUp";
 import Purchase from "./Pages/Purchase/Purchase";
 import RequireAuth from "./Shared/RequireAuth/RequireAuth";
 import UserProfile from "./Pages/UserProfile/UserProfile";
