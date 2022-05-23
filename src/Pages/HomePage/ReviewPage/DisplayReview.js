@@ -2,6 +2,7 @@ import React from "react";
 
 const DisplayReview = ({ review }) => {
   const { reviewDescription, reviewName, reviewPhoto, reviewRating } = review;
+
   return (
     <div class="card w-96">
       <figure class="px-10 pt-10">

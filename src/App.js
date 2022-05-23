@@ -13,6 +13,7 @@ import DashBoard from "./Pages/Dashboard/DashBoard";
 import MakeAdmin from "./Pages/MakeAdmin/MakeAdmin";
 import Orders from "./Pages/Dashboard/Orders";
 import Review from "./Pages/Dashboard/Review";
+import RequireAdmin from "./Shared/RequireAdmin/RequireAdmin";
 
 function App() {
   return (
@@ -37,7 +38,14 @@ function App() {
           }
         >
           <Route path="orders" element={<Orders />} />
-          <Route path="makeAdmin" element={<MakeAdmin />} />
+          <Route
+            path="makeAdmin"
+            element={
+              <RequireAdmin>
+                <MakeAdmin />
+              </RequireAdmin>
+            }
+          />
           <Route path="review" element={<Review />} />
         </Route>
 
