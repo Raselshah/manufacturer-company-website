@@ -1,7 +1,8 @@
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { useQuery } from "react-query";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Orders = () => {
@@ -27,6 +28,20 @@ const Orders = () => {
         .then((data) => setOrders(data));
     }
   }, [user]);
+
+  const handleDeleteOrders = (id) => {
+    const proceed = window.confirm("Ary you sure?");
+    if (proceed) {
+      fetch(`http://localhost:5000/removeItem/${id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
+  };
   return (
     <div>
       <div class="overflow-x-auto w-full">
@@ -67,8 +82,18 @@ const Orders = () => {
                 </td>
                 <td>{order?.price}</td>
                 <th>
-                  <button class="btn btn-ghost btn-xs">Pay</button>
-                  <button class="btn btn-ghost btn-xs">cancel</button>
+                  <Link
+                    to={`/dashboard/payment/${order._id}`}
+                    class="btn btn-ghost btn-xs"
+                  >
+                    Pay
+                  </Link>
+                  <button
+                    onClick={() => handleDeleteOrders(order?._id)}
+                    class="btn btn-ghost btn-xs"
+                  >
+                    cancel
+                  </button>
                 </th>
               </tr>
             ))}

@@ -82,27 +82,6 @@ const Purchase = () => {
       event.target.reset();
     }
   };
-  // const handleUserInfo = (event) => {
-  //   event.preventDefault();
-  //   const email = event.target.email.value;
-  //   const name = event.target.name.value;
-  //   const address = event.target.address.value;
-  //   const phoneNumber = event.target.phoneNumber.value;
-  //   console.log(email, name, address, phoneNumber);
-  //   const userInfo = { email, name, address, phoneNumber };
-  //   fetch("http://localhost:5000/userInfo", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(userInfo),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       console.log(result);
-  //       event.target.reset();
-  //     });
-  // };
   const navigate = useNavigate();
   const {
     isLoading,
