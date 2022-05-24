@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
+import Loading from "../../Shared/Loading/Loading";
 
 const MakeAdmin = () => {
   const {
@@ -17,7 +18,7 @@ const MakeAdmin = () => {
     }).then((res) => res.json())
   );
   if (isLoading) {
-    return <p>loading...</p>;
+    return <Loading />;
   }
 
   const makeAdmin = (email) => {
@@ -29,7 +30,6 @@ const MakeAdmin = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         toast.success("successfully admin added");
         refetch();
       });

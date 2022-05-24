@@ -5,6 +5,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import useToken from "../../hooks/useToken/useToken";
+import Loading from "../../Shared/Loading/Loading";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const LogIn = () => {
   };
 
   if (loading) {
-    return <p>loading...</p>;
+    return <Loading/>;
   }
 
   let logInError;

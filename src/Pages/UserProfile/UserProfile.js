@@ -2,6 +2,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import auth from "../../firebase.init";
+import Loading from "../../Shared/Loading/Loading.js";
 
 const UserProfile = () => {
   const [user] = useAuthState(auth);
@@ -11,7 +12,7 @@ const UserProfile = () => {
     )
   );
   if (isLoading) {
-    return <p>loading....</p>;
+    return <Loading />;
   }
   const { name, email, address, phoneNumber } = data;
   return (

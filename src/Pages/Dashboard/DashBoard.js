@@ -14,7 +14,6 @@ const DashBoard = () => {
         <h2 className="text-orange-600 font-bold text-2xl mb-4">
           Welcome Our Dashboard
         </h2>
-        {/* <!-- Page content here --> */}
         <Outlet />
       </div>
       <div class="drawer-side">

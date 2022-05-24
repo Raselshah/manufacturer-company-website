@@ -15,6 +15,7 @@ const UpcommingProducts = () => {
           <img
             src="https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             className="w-full shadow-2xl mx-auto"
+            alt=""
           />
           <div className="bg-slate-100 p-6 lg:p-12">
             <div className="bg-red-400 py-2">

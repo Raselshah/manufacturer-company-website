@@ -8,6 +8,7 @@ import {
 import auth from "../../firebase.init";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import useToken from "../../hooks/useToken/useToken";
+import Loading from "../../Shared/Loading/Loading";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const SignUp = () => {
   let signInError;
 
   if (loading || updating) {
-    return <p>loading...</p>;
+    return <Loading />;
   }
   if (error || updateError) {
     signInError = <p className="text-red-500">{error?.message}</p>;

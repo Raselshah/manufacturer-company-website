@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useParams } from "react-router-dom";
+import { useQuery } from "react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
 
 const Purchase = () => {
   const { id } = useParams();
@@ -28,10 +31,10 @@ const Purchase = () => {
     event.preventDefault();
     const quantity = event.target.quantity.value;
     if (minQuantity > quantity) {
-      console.log("please add many number");
+      toast.warning(`please add ${minQuantity}+ products`);
       return;
     } else if (maxQuantity < quantity) {
-      console.log("less than");
+      toast.warning(`please less than ${maxQuantity}`);
       return;
     } else {
       let newAvailable = availableQuantity - quantity;
@@ -47,7 +50,12 @@ const Purchase = () => {
         body: JSON.stringify(updateProduct),
       })
         .then((res) => res.json())
-        .then((data) => setSingleProduct(data));
+        .then((data) => {
+          toast.success(
+            "successfully order done.Please pay to confirm the product"
+          );
+          setSingleProduct(data);
+        });
 
       // order items post
       const totalPrice = quantity * price;
@@ -74,27 +82,40 @@ const Purchase = () => {
       event.target.reset();
     }
   };
-  const handleUserInfo = (event) => {
-    event.preventDefault();
-    const email = event.target.email.value;
-    const name = event.target.name.value;
-    const address = event.target.address.value;
-    const phoneNumber = event.target.phoneNumber.value;
-    console.log(email, name, address, phoneNumber);
-    const userInfo = { email, name, address, phoneNumber };
-    fetch("http://localhost:5000/userInfo", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userInfo),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        event.target.reset();
-      });
-  };
+  // const handleUserInfo = (event) => {
+  //   event.preventDefault();
+  //   const email = event.target.email.value;
+  //   const name = event.target.name.value;
+  //   const address = event.target.address.value;
+  //   const phoneNumber = event.target.phoneNumber.value;
+  //   console.log(email, name, address, phoneNumber);
+  //   const userInfo = { email, name, address, phoneNumber };
+  //   fetch("http://localhost:5000/userInfo", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(userInfo),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       console.log(result);
+  //       event.target.reset();
+  //     });
+  // };
+  const navigate = useNavigate();
+  const {
+    isLoading,
+    error,
+    data: userInformation,
+  } = useQuery("userInfo", () =>
+    fetch(`http://localhost:5000/userInfo/${user.email}`).then((res) =>
+      res.json()
+    )
+  );
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div class="hero min-h-screen bg-base-200">
       <div class="hero-content grid grid-cols-1 lg:grid-cols-2">
@@ -128,11 +149,11 @@ const Purchase = () => {
         </div>
         <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div class="card-body">
-            <form onSubmit={handleUserInfo} className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
               <div class="form-control">
                 <input
                   name="email"
-                  value={user?.email}
+                  value={userInformation?.email}
                   readOnly
                   disabled
                   type="text"
@@ -142,7 +163,7 @@ const Purchase = () => {
               <div class="form-control">
                 <input
                   name="name"
-                  value={user?.displayName}
+                  value={userInformation?.name}
                   disabled
                   readOnly
                   type="text"
@@ -151,6 +172,8 @@ const Purchase = () => {
               </div>
               <div class="form-control">
                 <input
+                  readOnly
+                  value={userInformation?.address}
                   name="address"
                   placeholder="Address"
                   type="text"
@@ -159,6 +182,8 @@ const Purchase = () => {
               </div>
               <div class="form-control">
                 <input
+                  readOnly
+                  value={userInformation?.phoneNumber}
                   name="phoneNumber"
                   placeholder="Phone Number"
                   type="text"
@@ -167,12 +192,13 @@ const Purchase = () => {
               </div>
               <div class="form-control mt-6">
                 <input
+                  onClick={() => navigate("/userProfile")}
                   className="btn btn-primary"
                   type="submit"
-                  value="SUBMIT"
+                  value="UPDATE"
                 />
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ import MakeAdmin from "./Pages/MakeAdmin/MakeAdmin";
 import Orders from "./Pages/Dashboard/Orders";
 import Review from "./Pages/Dashboard/Review";
 import RequireAdmin from "./Shared/RequireAdmin/RequireAdmin";
+import MyProfile from "./Pages/MyProfile/MyProfile";
 
 function App() {
   return (
@@ -49,7 +50,8 @@ function App() {
           <Route path="review" element={<Review />} />
         </Route>
 
-        <Route path="/userProfile" element={<UserProfile />} />
+        {/* <Route path="/userProfile" element={<UserProfile />} /> */}
+        <Route path="/userProfile" element={<MyProfile />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
