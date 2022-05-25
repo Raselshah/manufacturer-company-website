@@ -17,6 +17,7 @@ import RequireAdmin from "./Shared/RequireAdmin/RequireAdmin";
 import MyProfile from "./Pages/MyProfile/MyProfile";
 import Payment from "./Pages/Payment/Payment";
 import NotAPage from "./Pages/NotAPage/NotAPage";
+import AddProducts from "./Pages/AddProducts/AddProducts";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           />
           <Route path="review" element={<Review />} />
           <Route path="payment/:id" element={<Payment />} />
+          <Route path="addProducts" element={<AddProducts />} />
         </Route>
 
         {/* <Route path="/userProfile" element={<UserProfile />} /> */}

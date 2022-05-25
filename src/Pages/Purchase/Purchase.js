@@ -30,14 +30,16 @@ const Purchase = () => {
   const handleBuyButton = (event) => {
     event.preventDefault();
     const quantity = event.target.quantity.value;
-    if (minQuantity > quantity) {
+    const max = parseInt(maxQuantity);
+    const min = parseInt(minQuantity);
+    if (min > quantity) {
       toast.warning(`please add ${minQuantity}+ products`);
       return;
-    } else if (maxQuantity < quantity) {
+    } else if (max < quantity) {
       toast.warning(`please less than ${maxQuantity}`);
       return;
     } else {
-      let newAvailable = availableQuantity - quantity;
+      let newAvailable = parseInt(availableQuantity) - quantity;
       const updateProduct = {
         ...singleProduct,
         availableQuantity: newAvailable,
@@ -58,7 +60,7 @@ const Purchase = () => {
         });
 
       // order items post
-      const totalPrice = quantity * price;
+      const totalPrice = quantity * parseInt(price);
       const ordersInfo = {
         name: name,
         picture: picture,
