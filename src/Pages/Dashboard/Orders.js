@@ -1,8 +1,8 @@
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 const Orders = () => {
@@ -39,7 +39,9 @@ const Orders = () => {
         },
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          toast("Delete successfully");
+        });
     }
   };
   return (

@@ -69,7 +69,7 @@ const Review = () => {
       />
       {errors.reviewDescription && "Last name is required"}
 
-      <input type="submit" />
+      <input className="btn btn-accent" type="submit" />
     </form>
   );
 };

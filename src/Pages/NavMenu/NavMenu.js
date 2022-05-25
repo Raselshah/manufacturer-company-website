@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
 
 const NavMenu = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -13,7 +14,7 @@ const NavMenu = () => {
     navigate("/login");
   };
   if (loading) {
-    return <p>loading...</p>;
+    return <Loading />;
   }
   const menuItems = (
     <>
