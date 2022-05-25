@@ -8,7 +8,7 @@ const ManageOrders = () => {
     isLoading,
     error,
     data: allOrders,
-  } = useQuery("repoData", () =>
+  } = useQuery("orders", () =>
     fetch("http://localhost:5000/allOrders", {
       method: "GET",
       headers: {
@@ -39,7 +39,9 @@ const ManageOrders = () => {
             <tr>
               <th></th>
               <th>Product Name</th>
-              <th>User Name</th>
+              <th>User Email</th>
+              <th>Quantity</th>
+              <th>Price</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -49,6 +51,8 @@ const ManageOrders = () => {
                 <th>{index + 1}</th>
                 <td>{allOrder.name}</td>
                 <td>{allOrder.email}</td>
+                <td>{allOrder.quantity}</td>
+                <td>{allOrder.price}</td>
                 <td>
                   {allOrder.paid === true ? (
                     <button className="btn btn-xs btn-disabled">

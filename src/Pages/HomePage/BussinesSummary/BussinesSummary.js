@@ -9,7 +9,7 @@ const BussinesSummary = () => {
           Manufacturing Industries.
         </span>
       </h2>
-      <div className="stats shadow mt-12">
+      <div className="stats shadow mt-12 max-w-xs md:max-w-full">
         <div className="stat">
           <div className="stat-figure text-secondary">
             <svg

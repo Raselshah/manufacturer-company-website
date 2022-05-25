@@ -10,6 +10,7 @@ const Purchase = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [singleProduct, setSingleProduct] = useState({});
+  // const [userInformation, setUserInformation] = useState({});
 
   useEffect(() => {
     fetch(`http://localhost:5000/purchase/${id}`)
@@ -90,13 +91,22 @@ const Purchase = () => {
     error,
     data: userInformation,
   } = useQuery("userInfo", () =>
-    fetch(`http://localhost:5000/userInfo/${user.email}`).then((res) =>
+    fetch(`http://localhost:5000/userInfo/${user?.email}`).then((res) =>
       res.json()
     )
   );
+
   if (isLoading) {
     return <Loading />;
   }
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/userInfo/${user.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setUserInformation(data);
+  //     });
+  // }, [user.email]);
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content grid grid-cols-1 lg:grid-cols-2">

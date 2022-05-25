@@ -35,6 +35,19 @@ const MakeAdmin = () => {
       });
   };
 
+  const handleDeleteAdmin = (email) => {
+    fetch(`http://localhost:5000/adminRemove/${email}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast("successfully remove admin");
+      });
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -65,7 +78,12 @@ const MakeAdmin = () => {
                         Already Admin
                       </button>
                     )}
-                    <button className="btn btn-xs">Remove Admin</button>
+                    <button
+                      onClick={() => handleDeleteAdmin(user?.email)}
+                      className="btn btn-xs"
+                    >
+                      Remove Admin
+                    </button>
                   </div>
                 </td>
               </tr>
