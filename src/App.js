@@ -19,6 +19,7 @@ import Payment from "./Pages/Payment/Payment";
 import NotAPage from "./Pages/NotAPage/NotAPage";
 import AddProducts from "./Pages/AddProducts/AddProducts";
 import ManageProduct from "./Pages/Dashboard/ManageProduct";
+import ManageOrders from "./Pages/Dashboard/ManageOrders";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path="payment/:id" element={<Payment />} />
           <Route path="addProducts" element={<AddProducts />} />
           <Route path="manageProducts" element={<ManageProduct />} />
+          <Route path="manageOrders" element={<ManageOrders />} />
         </Route>
 
         {/* <Route path="/userProfile" element={<UserProfile />} /> */}
