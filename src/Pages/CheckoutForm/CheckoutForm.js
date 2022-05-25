@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 const CheckoutForm = ({ orders }) => {
-  const { price, userName, email } = orders;
+  const { _id, price, userName, email } = orders;
   const stripe = useStripe();
   const elements = useElements();
 
@@ -10,6 +10,7 @@ const CheckoutForm = ({ orders }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [paymentSuccess, setPaymentSuccess] = useState("");
   const [transactionId, setTransactionId] = useState("");
+  const [paymentLoading, setPaymentLoading] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:5000/create-payment-intent", {
@@ -49,6 +50,7 @@ const CheckoutForm = ({ orders }) => {
 
     setCardError(error?.message || "");
     setPaymentSuccess("");
+    setPaymentLoading(true);
 
     const { paymentIntent, error: paymentError } =
       await stripe.confirmCardPayment(clientSecret, {
@@ -62,12 +64,33 @@ const CheckoutForm = ({ orders }) => {
       });
 
     if (paymentError) {
+      setPaymentLoading(false);
       setCardError(paymentError?.message);
     } else {
       setCardError("");
       setTransactionId(paymentIntent.id);
       console.log(paymentIntent);
       setPaymentSuccess("Congratulation payment complete");
+
+      const paymentInfo = {
+        transactionId: paymentIntent.id,
+        payment: _id,
+      };
+
+      fetch(`http://localhost:5000/orders/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+
+        body: JSON.stringify(paymentInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setPaymentLoading(false);
+          console.log(data);
+        });
     }
   };
 

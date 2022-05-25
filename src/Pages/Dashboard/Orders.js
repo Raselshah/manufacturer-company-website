@@ -44,8 +44,8 @@ const Orders = () => {
   };
   return (
     <div>
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>Product Name</th>
@@ -56,11 +56,11 @@ const Orders = () => {
           </thead>
           <tbody>
             {orders?.map((order) => (
-              <tr>
+              <tr key={order._id}>
                 <td>
-                  <div class="flex items-center space-x-3">
-                    <div class="avatar">
-                      <div class="mask mask-squircle w-12 h-12">
+                  <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
                         <img
                           src={order?.picture}
                           alt="Avatar Tailwind CSS Component"
@@ -68,8 +68,8 @@ const Orders = () => {
                       </div>
                     </div>
                     <div>
-                      <div class="font-bold">{order?.name}</div>
-                      <div class="text-sm opacity-50">
+                      <div className="font-bold">{order?.name}</div>
+                      <div className="text-sm opacity-50">
                         Quantity : {order?.quantity}
                       </div>
                     </div>
@@ -78,23 +78,40 @@ const Orders = () => {
                 <td>
                   {order?.userName}
                   <br />
-                  <span class="badge badge-ghost badge-sm">{order?.email}</span>
+                  <span className="badge badge-ghost badge-sm">
+                    {order?.email}
+                  </span>
                 </td>
                 <td>{order?.price}</td>
-                <th>
-                  <Link
-                    to={`/dashboard/payment/${order._id}`}
-                    class="btn btn-ghost btn-xs"
-                  >
-                    Pay
-                  </Link>
-                  <button
-                    onClick={() => handleDeleteOrders(order?._id)}
-                    class="btn btn-ghost btn-xs"
-                  >
-                    cancel
-                  </button>
-                </th>
+                <td>
+                  {order.price && !order.paid && (
+                    <Link
+                      to={`/dashboard/payment/${order._id}`}
+                      className="btn btn-ghost btn-xs"
+                    >
+                      Pay
+                    </Link>
+                  )}
+
+                  {order.price && order.paid && (
+                    <>
+                      <p className="btn btn-xs btn-disabled">paid</p>
+                      <p className="text-accent">
+                        TransactionId : {order.transactionId}
+                      </p>
+                    </>
+                  )}
+                  {order.paid ? (
+                    ""
+                  ) : (
+                    <button
+                      onClick={() => handleDeleteOrders(order?._id)}
+                      className="btn btn-ghost btn-xs"
+                    >
+                      cancel
+                    </button>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>

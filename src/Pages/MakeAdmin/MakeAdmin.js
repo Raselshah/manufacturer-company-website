@@ -37,8 +37,8 @@ const MakeAdmin = () => {
 
   return (
     <div>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th></th>
@@ -56,16 +56,16 @@ const MakeAdmin = () => {
                     {user.role !== "admin" ? (
                       <button
                         onClick={() => makeAdmin(user?.email)}
-                        class="btn btn-xs"
+                        className="btn btn-xs"
                       >
                         Make Admin
                       </button>
                     ) : (
-                      <button disabled class="btn btn-xs">
+                      <button disabled className="btn btn-xs">
                         Already Admin
                       </button>
                     )}
-                    <button class="btn btn-xs">Remove Admin</button>
+                    <button className="btn btn-xs">Remove Admin</button>
                   </div>
                 </td>
               </tr>

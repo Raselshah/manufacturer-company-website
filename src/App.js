@@ -16,6 +16,7 @@ import Review from "./Pages/Dashboard/Review";
 import RequireAdmin from "./Shared/RequireAdmin/RequireAdmin";
 import MyProfile from "./Pages/MyProfile/MyProfile";
 import Payment from "./Pages/Payment/Payment";
+import NotAPage from "./Pages/NotAPage/NotAPage";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/userProfile" element={<MyProfile />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="*" element={<NotAPage />} />
       </Routes>
 
       <ToastContainer />

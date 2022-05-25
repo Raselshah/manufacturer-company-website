@@ -96,80 +96,83 @@ const Purchase = () => {
     return <Loading />;
   }
   return (
-    <div class="hero min-h-screen bg-base-200">
-      <div class="hero-content grid grid-cols-1 lg:grid-cols-2">
-        <div class="card bg-base-100 shadow-xl image-full">
+    <div className="hero min-h-screen bg-base-200">
+      <div className="hero-content grid grid-cols-1 lg:grid-cols-2">
+        <div className="card bg-base-100 shadow-xl image-full">
           <figure>
             <img src={picture} alt="Shoes" />
           </figure>
-          <div class="card-body">
-            <h2 class="card-title">{name}</h2>
+          <div className="card-body">
+            <h2 className="card-title">{name}</h2>
             <p>{description}</p>
             <p className="text-accent text-lg font-bold">Price $ : {price}</p>
             <p className="text-accent text-lg font-bold">
               Available products : {availableQuantity}
             </p>
 
-            <form onSubmit={handleBuyButton} class="card-actions justify-end">
+            <form
+              onSubmit={handleBuyButton}
+              className="card-actions justify-end"
+            >
               <input
                 type="number"
                 name="quantity"
                 placeholder={`Minimum order ${minQuantity} and maximum ${maxQuantity}`}
-                class="input w-full text-primary"
+                className="input w-full text-primary"
               />
               <input
                 onClick={() => handleBuyButton}
-                class="btn btn-accent btn-outline w-1/3 mx-auto hover:duration-500 ease-in-out"
+                className="btn btn-accent btn-outline w-1/3 mx-auto hover:duration-500 ease-in-out"
                 type="submit"
                 value="Buy Now"
               />
             </form>
           </div>
         </div>
-        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div class="card-body">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card-body">
             <div className="flex flex-col gap-2">
-              <div class="form-control">
+              <div className="form-control">
                 <input
                   name="email"
                   value={userInformation?.email}
                   readOnly
                   disabled
                   type="text"
-                  class="input input-bordered"
+                  className="input input-bordered"
                 />
               </div>
-              <div class="form-control">
+              <div className="form-control">
                 <input
                   name="name"
                   value={userInformation?.name}
                   disabled
                   readOnly
                   type="text"
-                  class="input input-bordered"
+                  className="input input-bordered"
                 />
               </div>
-              <div class="form-control">
+              <div className="form-control">
                 <input
                   readOnly
                   value={userInformation?.address}
                   name="address"
                   placeholder="Address"
                   type="text"
-                  class="input input-bordered"
+                  className="input input-bordered"
                 />
               </div>
-              <div class="form-control">
+              <div className="form-control">
                 <input
                   readOnly
                   value={userInformation?.phoneNumber}
                   name="phoneNumber"
                   placeholder="Phone Number"
                   type="text"
-                  class="input input-bordered"
+                  className="input input-bordered"
                 />
               </div>
-              <div class="form-control mt-6">
+              <div className="form-control mt-6">
                 <input
                   onClick={() => navigate("/userProfile")}
                   className="btn btn-primary"

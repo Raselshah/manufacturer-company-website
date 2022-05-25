@@ -35,25 +35,25 @@ const Review = () => {
       <input
         readOnly
         value={user?.displayName}
-        class="input input-bordered w-full"
+        className="input input-bordered w-full"
         {...register("reviewName")}
       />
 
       <input
         readOnly
         value={user?.email}
-        class="input input-bordered w-full"
+        className="input input-bordered w-full"
         {...register("reviewEmail")}
       />
       <input
         placeholder="photoUrl"
-        class="input input-bordered w-full"
+        className="input input-bordered w-full"
         {...register("reviewPhoto", { required: true })}
       />
       {errors.reviewPhoto && "Last name is required"}
 
-      <label class="label">
-        <span class="label-text">Please ratings*</span>
+      <label className="label">
+        <span className="label-text">Please ratings*</span>
       </label>
       <select {...register("reviewRating")}>
         <option value="1">1</option>
@@ -64,7 +64,7 @@ const Review = () => {
       </select>
       <textarea
         placeholder="Comment"
-        class="input input-bordered w-full h-28"
+        className="input input-bordered w-full h-28"
         {...register("reviewDescription", { required: true })}
       />
       {errors.reviewDescription && "Last name is required"}

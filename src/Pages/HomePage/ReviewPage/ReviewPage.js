@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
+import Loading from "../../../Shared/Loading/Loading";
 import DisplayReview from "./DisplayReview";
 
 const ReviewPage = () => {
@@ -11,7 +12,7 @@ const ReviewPage = () => {
     fetch("http://localhost:5000/review").then((res) => res.json())
   );
   if (isLoading) {
-    return <p>loading...</p>;
+    return <Loading />;
   }
 
   return (

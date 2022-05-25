@@ -17,9 +17,9 @@ const UserProfile = () => {
   const { name, email, address, phoneNumber } = data;
   return (
     <div>
-      <div class="card w-96 mx-auto mt-12 bg-slate-200 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">{name}</h2>
+      <div className="card w-96 mx-auto mt-12 bg-slate-200 shadow-xl">
+        <div className="card-body">
+          <h2 className="card-title">{name}</h2>
           <p>{email}</p>
           <p>{address}</p>
           <p>{phoneNumber}</p>

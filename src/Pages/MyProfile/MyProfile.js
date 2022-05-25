@@ -29,46 +29,46 @@ const MyProfile = () => {
   return (
     <div className="mt-12">
       <h2 className="text-4xl text-center text-accent mb-2">Your Profile</h2>
-      <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto">
-        <div class="card-body">
+      <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto">
+        <div className="card-body">
           <form onSubmit={handleUserInfo} className="flex flex-col gap-2">
-            <div class="form-control">
+            <div className="form-control">
               <input
                 name="email"
                 value={user?.email}
                 readOnly
                 disabled
                 type="text"
-                class="input input-bordered"
+                className="input input-bordered"
               />
             </div>
-            <div class="form-control">
+            <div className="form-control">
               <input
                 name="name"
                 value={user?.displayName}
                 disabled
                 readOnly
                 type="text"
-                class="input input-bordered"
+                className="input input-bordered"
               />
             </div>
-            <div class="form-control">
+            <div className="form-control">
               <input
                 name="address"
                 placeholder="Address"
                 type="text"
-                class="input input-bordered"
+                className="input input-bordered"
               />
             </div>
-            <div class="form-control">
+            <div className="form-control">
               <input
                 name="phoneNumber"
                 placeholder="Phone Number"
                 type="text"
-                class="input input-bordered"
+                className="input input-bordered"
               />
             </div>
-            <div class="form-control mt-6">
+            <div className="form-control mt-6">
               <input className="btn btn-primary" type="submit" value="SUBMIT" />
             </div>
           </form>
