@@ -21,6 +21,7 @@ import AddProducts from "./Pages/AddProducts/AddProducts";
 import ManageProduct from "./Pages/Dashboard/ManageProduct";
 import ManageOrders from "./Pages/Dashboard/ManageOrders";
 import AboutMe from "./Pages/AboutMe/AboutMe";
+import BlogPage from "./Pages/BlogPage/BlogPage";
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
         </Route>
 
         {/* <Route path="/userProfile" element={<UserProfile />} /> */}
+        <Route path="/blog" element={<BlogPage />} />
         <Route path="/userProfile" element={<MyProfile />} />
         <Route path="/about" element={<AboutMe />} />
         <Route path="/login" element={<LogIn />} />
