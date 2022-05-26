@@ -49,7 +49,7 @@ const ManageOrders = () => {
             {allOrders.map((allOrder, index) => (
               <tr>
                 <th>{index + 1}</th>
-                <td>{allOrder.name}</td>
+                <td>{allOrder.name.slice(0, 30) + "..."}</td>
                 <td>{allOrder.email}</td>
                 <td>{allOrder.quantity}</td>
                 <td>{allOrder.price}</td>

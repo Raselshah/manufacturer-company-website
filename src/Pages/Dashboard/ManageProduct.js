@@ -24,7 +24,7 @@ const ManageProduct = () => {
   };
   return (
     <div>
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full mx-auto">
         <table className="table w-full">
           <thead>
             <tr>
@@ -48,7 +48,9 @@ const ManageProduct = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{product?.name}</div>
+                      <div className="font-bold">
+                        {product?.name.slice(0, 30) + "..."}
+                      </div>
                       <div className="text-sm opacity-50">
                         Quantity : {product?.availableQuantity}
                       </div>

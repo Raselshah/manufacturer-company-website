@@ -3,17 +3,25 @@ import { useNavigate } from "react-router-dom";
 
 const DisplayProducts = ({ product }) => {
   const navigate = useNavigate();
-  const { _id, picture, name, description } = product;
+  const { _id, picture, availableQuantity, price, name, description } = product;
+  console.log(product);
   return (
     <div>
-      <div className="card h-full w-max-lg bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
-          <img src={picture} alt="Shoes" className="rounded-xl" />
+      <div class="card h-full w-max-lg bg-base-100 shadow-xl">
+        <figure>
+          <img src={picture} alt="product" />
         </figure>
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">{name}</h2>
-          <p>{description?.slice(0, 30)}</p>
-          <div className="card-actions">
+        <div class="card-body">
+          <h2 class="card-title text-lg">{name.slice(0, 50) + "..."}</h2>
+          <p>{description}</p>
+          <div class="card-actions justify-between mt-2">
+            <p className="text-orange-500">
+              Available in : {availableQuantity}
+            </p>
+
+            <p className="text-orange-500">Price : $ {price}</p>
+          </div>
+          <div className="card-actions w-1/3 mx-auto mt-2">
             <button
               onClick={() => navigate(`/purchase/${_id}`)}
               className="btn btn-primary"

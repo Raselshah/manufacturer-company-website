@@ -9,6 +9,7 @@ const Orders = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
+
   useEffect(() => {
     if (user) {
       fetch(`http://localhost:5000/orders?email=${user?.email}`, {
@@ -70,7 +71,9 @@ const Orders = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{order?.name}</div>
+                      <div className="font-bold">
+                        {order?.name.slice(0, 30) + "..."}
+                      </div>
                       <div className="text-sm opacity-50">
                         Quantity : {order?.quantity}
                       </div>

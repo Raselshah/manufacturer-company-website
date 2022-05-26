@@ -40,7 +40,7 @@ const AddProducts = () => {
         <input
           className="flex flex-col mb-2 p-2 border-b-2 w-full"
           placeholder="Product Name"
-          {...register("name", { required: true, maxLength: 20 })}
+          {...register("name")}
         />
         <input
           className="flex flex-col mb-2 p-2 w-full border-b-2"

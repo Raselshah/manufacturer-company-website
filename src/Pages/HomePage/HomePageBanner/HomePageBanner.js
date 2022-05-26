@@ -15,7 +15,7 @@ const HomePageBanner = () => {
           </a>
           <div className="flex flex-col justify-center items-center gap-y-2">
             <p className="text-white font-bold text-2xl">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit,
+              This product is new arrival.On 20% discount
             </p>
             <button className="btn btn-outline btn-accent uppercase hover:text-white">
               See More
@@ -38,8 +38,9 @@ const HomePageBanner = () => {
             ❮
           </a>
           <div className="flex flex-col justify-center items-center gap-y-2">
-            <p className="text-orange-600 font-bold text-lg">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit,
+            <p className="text-white font-bold text-lg">
+              Processors can be found in PCs, smartphones, tablets and other
+              computers.
             </p>
             <button className="btn btn-outline btn-accent uppercase hover:text-white">
               See More
@@ -61,8 +62,9 @@ const HomePageBanner = () => {
             ❮
           </a>
           <div className="flex flex-col justify-center items-center gap-y-2">
-            <p className="text-orange-600 font-bold text-lg">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit,
+            <p className="text-white font-bold text-lg">
+              Assus EB192Q Monitor comes with 18.5 Inch (1366x768) HD Backlit
+              LED LCD Display.
             </p>
             <button className="btn btn-outline btn-accent uppercase hover:text-white">
               See More
@@ -84,8 +86,9 @@ const HomePageBanner = () => {
             ❮
           </a>
           <div className="flex flex-col justify-center items-center gap-y-2">
-            <p className="text-orange-600 font-bold text-lg">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit,
+            <p className="text-white font-bold text-lg">
+              FURY HYPERX V Desktop RAM comes with 8GB 5200MHz DDR5 Capacity
+              with Red Heatsink.
             </p>
             <button className="btn btn-outline btn-accent uppercase hover:text-white">
               See More
