@@ -8,7 +8,7 @@ const AddProducts = () => {
   const [user] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data, event) => {
-    fetch("http://localhost:5000/addProduct", {
+    fetch("https://vast-atoll-16913.herokuapp.com/addProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",

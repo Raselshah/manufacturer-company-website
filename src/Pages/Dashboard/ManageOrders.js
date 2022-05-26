@@ -9,7 +9,7 @@ const ManageOrders = () => {
     error,
     data: allOrders,
   } = useQuery("orders", () =>
-    fetch("http://localhost:5000/allOrders", {
+    fetch("https://vast-atoll-16913.herokuapp.com/allOrders", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -20,7 +20,7 @@ const ManageOrders = () => {
     return <Loading />;
   }
   const handleOrderDelete = (id) => {
-    fetch(`http://localhost:5000/deleteOrders/${id}`, {
+    fetch(`https://vast-atoll-16913.herokuapp.com/deleteOrders/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

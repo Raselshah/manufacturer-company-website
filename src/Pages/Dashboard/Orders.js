@@ -12,12 +12,15 @@ const Orders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/orders?email=${user?.email}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://vast-atoll-16913.herokuapp.com/orders?email=${user?.email}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => {
           if (res.status === 401 || res.status === 403) {
             signOut(auth);
@@ -33,7 +36,7 @@ const Orders = () => {
   const handleDeleteOrders = (id) => {
     const proceed = window.confirm("Ary you sure?");
     if (proceed) {
-      fetch(`http://localhost:5000/removeItem/${id}`, {
+      fetch(`https://vast-atoll-16913.herokuapp.com/removeItem/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
