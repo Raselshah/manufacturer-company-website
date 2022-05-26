@@ -20,6 +20,7 @@ import NotAPage from "./Pages/NotAPage/NotAPage";
 import AddProducts from "./Pages/AddProducts/AddProducts";
 import ManageProduct from "./Pages/Dashboard/ManageProduct";
 import ManageOrders from "./Pages/Dashboard/ManageOrders";
+import AboutMe from "./Pages/AboutMe/AboutMe";
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
 
         {/* <Route path="/userProfile" element={<UserProfile />} /> */}
         <Route path="/userProfile" element={<MyProfile />} />
+        <Route path="/about" element={<AboutMe />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<NotAPage />} />
