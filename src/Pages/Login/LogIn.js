@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import useToken from "../../hooks/useToken/useToken";
 import Loading from "../../Shared/Loading/Loading";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const LogIn = () => {
   };
 
   if (loading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   let logInError;
@@ -123,7 +123,7 @@ const LogIn = () => {
               <button className="btn btn-accent">Login</button>
             </div>
             <div className="flex justify-center mt-3">
-              <small className="text-accent mr-1">New to Doctors Portal?</small>
+              <small className="text-accent mr-1">New to orbitX Portal?</small>
               <small
                 onClick={() => navigate("/signup")}
                 className="text-primary cursor-pointer"

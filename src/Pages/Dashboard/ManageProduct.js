@@ -4,14 +4,14 @@ import { toast } from "react-toastify";
 const ManageProduct = () => {
   const [allProducts, setAllProducts] = useState([]);
   useEffect(() => {
-    fetch("https://vast-atoll-16913.herokuapp.com/home")
+    fetch("http://localhost:5000/home")
       .then((res) => res.json())
       .then((data) => setAllProducts(data));
   }, []);
 
   const handleProductDelete = (id) => {
     console.log(id);
-    fetch(`https://vast-atoll-16913.herokuapp.com/product/${id}`, {
+    fetch(`http://localhost:5000/product/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

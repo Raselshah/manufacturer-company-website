@@ -13,7 +13,7 @@ const Review = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    fetch("https://vast-atoll-16913.herokuapp.com/review", {
+    fetch("http://localhost:5000/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

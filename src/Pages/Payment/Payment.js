@@ -1,9 +1,9 @@
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Loading from "../../Shared/Loading/Loading";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 const stripePromise = loadStripe(
@@ -17,7 +17,7 @@ const Payment = () => {
     error,
     data: orders,
   } = useQuery(["payment", id], () =>
-    fetch(`https://vast-atoll-16913.herokuapp.com/payment/${id}`, {
+    fetch(`http://localhost:5000/payment/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import React, { useEffect, useState } from "react";
 
 const CheckoutForm = ({ orders }) => {
   const { _id, price, userName, email } = orders;
@@ -13,7 +13,7 @@ const CheckoutForm = ({ orders }) => {
   const [paymentLoading, setPaymentLoading] = useState(false);
 
   useEffect(() => {
-    fetch("https://vast-atoll-16913.herokuapp.com/create-payment-intent", {
+    fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -77,7 +77,7 @@ const CheckoutForm = ({ orders }) => {
         payment: _id,
       };
 
-      fetch(`https://vast-atoll-16913.herokuapp.com/orders/${_id}`, {
+      fetch(`http://localhost:5000/orders/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

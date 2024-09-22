@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import useToken from "../../hooks/useToken/useToken";
 import Loading from "../../Shared/Loading/Loading";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -142,7 +142,7 @@ const SignUp = () => {
               <button className="btn btn-accent">Sign Up</button>
             </div>
             <div className="flex flex-col sm:flex-row justify-center mt-3">
-              <small className="text-accent mr-1">New to Doctors Portal?</small>
+              <small className="text-accent mr-1">New to orbitX Portal?</small>
               <small
                 onClick={() => navigate("/login")}
                 className="text-primary cursor-pointer"

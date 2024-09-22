@@ -13,10 +13,10 @@ const Purchase = () => {
   // const [userInformation, setUserInformation] = useState({});
 
   useEffect(() => {
-    fetch(`https://vast-atoll-16913.herokuapp.com/purchase/${id}`)
+    fetch(`http://localhost:5000/purchase/${id}`)
       .then((res) => res.json())
       .then((result) => setSingleProduct(result));
-  }, [singleProduct]);
+  }, []);
 
   const {
     name,
@@ -45,7 +45,7 @@ const Purchase = () => {
         ...singleProduct,
         availableQuantity: newAvailable,
       };
-      fetch(`https://vast-atoll-16913.herokuapp.com/purchase/${id}`, {
+      fetch(`http://localhost:5000/purchase/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -70,7 +70,7 @@ const Purchase = () => {
         userName: user?.displayName,
         quantity: quantity,
       };
-      fetch("https://vast-atoll-16913.herokuapp.com/orders", {
+      fetch("http://localhost:5000/orders", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -91,9 +91,9 @@ const Purchase = () => {
     error,
     data: userInformation,
   } = useQuery("userInfo", () =>
-    fetch(
-      `https://vast-atoll-16913.herokuapp.com/userInfo/${user?.email}`
-    ).then((res) => res.json())
+    fetch(`http://localhost:5000/userInfo/${user?.email}`).then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {
@@ -101,7 +101,7 @@ const Purchase = () => {
   }
 
   // useEffect(() => {
-  //   fetch(`https://vast-atoll-16913.herokuapp.com/userInfo/${user.email}`)
+  //   fetch(`http://localhost:5000/userInfo/${user.email}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setUserInformation(data);

@@ -7,8 +7,8 @@ import Loading from "../../Shared/Loading/Loading.js";
 const UserProfile = () => {
   const [user] = useAuthState(auth);
   const { isLoading, error, data } = useQuery("userInfo", () =>
-    fetch(`https://vast-atoll-16913.herokuapp.com/userInfo/${user.email}`).then(
-      (res) => res.json()
+    fetch(`http://localhost:5000/userInfo/${user.email}`).then((res) =>
+      res.json()
     )
   );
   if (isLoading) {

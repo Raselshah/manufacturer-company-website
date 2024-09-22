@@ -12,15 +12,12 @@ const Orders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(
-        `https://vast-atoll-16913.herokuapp.com/orders?email=${user?.email}`,
-        {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => {
           if (res.status === 401 || res.status === 403) {
             signOut(auth);
@@ -36,7 +33,7 @@ const Orders = () => {
   const handleDeleteOrders = (id) => {
     const proceed = window.confirm("Ary you sure?");
     if (proceed) {
-      fetch(`https://vast-atoll-16913.herokuapp.com/removeItem/${id}`, {
+      fetch(`http://localhost:5000/removeItem/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -75,7 +72,7 @@ const Orders = () => {
                     </div>
                     <div>
                       <div className="font-bold">
-                        {order?.name.slice(0, 30) + "..."}
+                        {order?.name?.slice(0, 30) + "..."}
                       </div>
                       <div className="text-sm opacity-50">
                         Quantity : {order?.quantity}

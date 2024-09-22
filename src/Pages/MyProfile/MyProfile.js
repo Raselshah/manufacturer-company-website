@@ -13,7 +13,7 @@ const MyProfile = () => {
     const phoneNumber = event.target.phoneNumber.value;
     console.log(email, name, address, phoneNumber);
     const userInfo = { email, name, address, phoneNumber };
-    fetch(`https://vast-atoll-16913.herokuapp.com/userInfo/${email}`, {
+    fetch(`http://localhost:5000/userInfo/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

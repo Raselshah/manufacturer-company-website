@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import Loading from "../../Shared/Loading/Loading";
@@ -9,7 +9,7 @@ const ManageOrders = () => {
     error,
     data: allOrders,
   } = useQuery("orders", () =>
-    fetch("https://vast-atoll-16913.herokuapp.com/allOrders", {
+    fetch("http://localhost:5000/allOrders", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -20,7 +20,7 @@ const ManageOrders = () => {
     return <Loading />;
   }
   const handleOrderDelete = (id) => {
-    fetch(`https://vast-atoll-16913.herokuapp.com/deleteOrders/${id}`, {
+    fetch(`http://localhost:5000/deleteOrders/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -46,10 +46,10 @@ const ManageOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {allOrders.map((allOrder, index) => (
+            {allOrders?.map((allOrder, index) => (
               <tr>
                 <th>{index + 1}</th>
-                <td>{allOrder.name.slice(0, 30) + "..."}</td>
+                <td>{allOrder?.name?.slice(0, 30) + "..."}</td>
                 <td>{allOrder.email}</td>
                 <td>{allOrder.quantity}</td>
                 <td>{allOrder.price}</td>
